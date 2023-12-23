@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Length Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: url(https://i1.wp.com/www.computersnyou.com/wp-content/uploads/2013/02/up2.jpg?resize=1024%2C576&ssl=1);
+            background-size: cover;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px; 
+            width: 92%;
+            box-sizing: border-box;
+            
+            margin: 156px 17px;
+;
+        }
+
+        label, select, input, button {
+            margin: 10px;
+            padding: 8px;
+            width: 100%; 
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        .mobile{
+            background: url(https://i1.wp.com/www.computersnyou.com/wp-content/uploads/2013/02/up2.jpg?resize=1024%2C576&ssl=1);
+            color: white;
+            border: none;
+            padding: 12px 39px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            height: 818px;
+            width: 396px;
+            margin-top: -9px;
+}
+    </style>
+</head>
+<body>
+    <div class="mobile">
+    <div class="container">
+        
+        <div><h1 style="color: rgb(0, 0, 0);"></h1>
+            <label for="fromUnit">From:</label>
+            <select id="fromUnit">
+                <option value="yb">Yottabyte (YB)</option>
+                <option value="zb">Zettabyte (ZB)</option>
+                <option value="eb">Exabyte (EB)</option>
+                <option value="pb">Petabyte (PB)</option>
+                <option value="tb">Terabyte (TB)</option>
+                <option value="gb">Gigabyte (GB)</option>
+                <option value="mb">Megabyte (MB)</option>
+                <option value="kb">Kilobyte (KB)</option>
+                <option value="by">Byte (B)</option>
+                <option value="bi">Bit (b)</option>
+            </select>
+            <input type="number" id="inputValue" placeholder="Enter value">
+        </div>
+        <div>
+            <label for="toUnit">To:</label>
+            <select id="toUnit">
+                <option value="yb">Yottabyte (YB)</option>
+                <option value="zb">Zettabyte (ZB)</option>
+                <option value="eb">Exabyte (EB)</option>
+                <option value="pb">Petabyte (PB)</option>
+                <option value="tb">Terabyte (TB)</option>
+                <option value="gb">Gigabyte (GB)</option>
+                <option value="mb">Megabyte (MB)</option>
+                <option value="kb">Kilobyte (KB)</option>
+                <option value="by">Byte (B)</option>
+                <option value="bi">Bit (b)</option>
+            </select>
+            <input type="text" id="result" readonly>
+        </div>
+        <button onclick="convert()">Convert</button>
+    </div>
+</div>
+    <script>
+      function convert() {
+    // Get values from the input fields
+    let inputValue = parseFloat(document.getElementById('inputValue').value);
+    let fromUnit = document.getElementById('fromUnit').value;
+    let toUnit = document.getElementById('toUnit').value;
+
+    // Convert input value to meters
+    let Megabytes = 0;
+    switch (fromUnit) {
+        case "yb":
+            Megabytes = inputValue * 1024**6;
+            break;
+        case "zb":
+            Megabytes = inputValue *1024**5;
+            break;
+        case "eb":
+            Megabytes = inputValue * 1024**4;
+            break;
+        case "pb":
+            Megabytes = inputValue * 1024**3;
+            break;
+        case "tb":
+            Megabytes = inputValue * 1024**2;
+            break;
+        case "gb":
+            Megabytes = inputValue * 1024;
+            break;
+        case "mb":
+            Megabytes = inputValue ;
+            break;
+        case "kb":
+            Megabytes = inputValue * 0.0009765625;
+            break;
+        case "by":
+            Megabytes = inputValue * 9.5367431640625e-7;
+            break;
+        case "bi":
+            Megabytes = inputValue * 7.62939453125e-6;
+            break;
+    }
+
+    // Convert meters to output unit
+    let outputValue = 0;
+    switch (toUnit) {
+        case "yb":
+            outputValue = Megabytes / 1024**6;
+            break;
+        case "zb":
+            outputValue = Megabytes / 1024**5;
+            break;
+        case "eb":
+            outputValue = Megabytes / 1024**4;
+            break;
+        case "pb":
+            outputValue = Megabytes / 1024**3;
+            break;
+        case "tb":
+            outputValue = Megabytes / 1024**2;
+            break;
+        case "gb":
+            outputValue = Megabytes / 1024;
+            break;
+        case "mb":
+            outputValue = Megabytes ;
+            break;
+        case "kb":
+            outputValue = Megabytes / 0.0009765625;
+            break;
+        case "by":
+            outputValue = Megabytes / 9.5367431640625e-7;
+            break;
+        case "bi":
+            outputValue = Megabytes / 7.62939453125e-6;
+            break;
+    }
+
+    // Display the result
+    document.getElementById('result').value = outputValue;
+}
+
+    </script>
+</body>
+</html>
